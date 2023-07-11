@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, createHashRouter } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Register from "./Components/Register/Register";
 import Movies from "./Components/Movies/Movies";
@@ -9,7 +9,7 @@ import jwtDecode from 'jwt-decode';
 import NotFound from "./Components/NotFound/NotFound";
 import Actors from './Components/Actors/Actors';
 import Login from './Components/Login/Login';
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+// import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import {Provider} from "react-redux"
 import {store} from './Redux/Store';
 import MoviesCard from "./Components/MoviesCard/MoviesCard";
@@ -20,7 +20,6 @@ import TvShowDiscover from './Components/TvShowDiscover/TvShowDiscover';
 import Search from './Components/Search/Search';
 import MovieCard2 from './Components/MovieCard2/MovieCard2';
 import MovieDetails2 from './Components/MovieDetails2/MovieDetails2';
-import { SkeletonTheme } from "react-loading-skeleton";
 const LazyLoading = React.lazy(()=> import("./Components/Home/Home"));
 
 
@@ -40,7 +39,7 @@ const saveUserData = () =>{
 }
 
   
-  let routers = createBrowserRouter([
+  let routers = createHashRouter([
     {
       path: "",
       element: <Layout userData={userData} setUserData={setUserData}/>,
