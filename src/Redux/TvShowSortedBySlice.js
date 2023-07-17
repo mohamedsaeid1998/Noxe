@@ -55,3 +55,4 @@ export const tvShowSortedBySlice = createSlice({
   
 })
 
+export const tvShowSortedReducer = tvShowSortedBySlice.reducer

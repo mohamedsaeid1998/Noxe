@@ -61,18 +61,16 @@ const saveUserData = () =>{
         { path: "actorDetails/:id/:media", element:<ActorDetails/> },
         { path: "login", element: <Login  saveUserData={saveUserData}/> },
         { path: "register", element:<Register/>},
-        { path: "notFound", element: <NotFound /> },
+        { path: "*", element: <NotFound /> },
       ],
     },
   ]);
 
 return <>
-
   <Provider store={store} >
       <Toaster/>
       <RouterProvider router={routers}/>
   </Provider>
-
 </>
 };
 

@@ -101,6 +101,7 @@ export const movieDetailsSlice = createSlice({
       state.error = action.error.message;
     })
 
-
   }
 })
+
+export const movieDetailsReducer = movieDetailsSlice.reducer

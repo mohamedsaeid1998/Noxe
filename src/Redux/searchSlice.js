@@ -32,3 +32,5 @@ export const searchSlice =createSlice({
 
   }
 })
+
+export const searchReducer = searchSlice.reducer

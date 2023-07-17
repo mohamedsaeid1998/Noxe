@@ -8,11 +8,11 @@ import Slider from "react-slick"
 import { Link } from 'react-router-dom';
 import ActorCard from '../ActorCard/ActorCard'
 import { Helmet } from 'react-helmet'
-
-
+import Loading from './../Loading/Loading';
 
 const Home = () => {
-
+ let {loading}=useSelector((state)=>state.trending)
+ console.log(loading);
 let dispatch = useDispatch()
 const [number, setNumber] = useState("1")
 const [movies, setMovies] = useState([])
@@ -142,6 +142,8 @@ const settings2  = {
 <Helmet>
 <title>Home</title>
 </Helmet>
+{!loading?
+
   <section>
 
   <Slider  {...settings2}>
@@ -326,8 +328,7 @@ const settings2  = {
 
 
 
-  </section>
-
+  </section>:<Loading/>}
 
 
     </>

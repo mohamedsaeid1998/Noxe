@@ -68,7 +68,7 @@ const Login = ({saveUserData}) => {
 {loading?<button disabled type='button' className='btn btn-primary mt-2' ><i className='fas fa-spinner fa-spin'></i> Login</button>:<button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn btn-primary mt-2 ' >Login</button>}
 </div>
 
-<div className='text-center mt-2'>Not a member yet ? <Link to="/" className='text-decoration-none'><span className='text-primary'>Create Account</span> </Link></div>
+<div className='text-center mt-2'>Not a member yet ? <Link to="/register" className='text-decoration-none'><span className='text-primary'>Create Account</span> </Link></div>
 
 </form>
 </div>

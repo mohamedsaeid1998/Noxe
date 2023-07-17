@@ -11,7 +11,7 @@ const MovieCard2 = ({media,movie}) => {
 <div className='movieCard'>
 <Link className='text-decoration-none text-white' to={`/movieDetails2/${movie.id}/${media}`}>
 <figure className='m-0' >
-{movie.profile_path?<img className=' rounded-5 p-3 ' src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`} height={270} alt="" />:<img className=' rounded-5 p-3 ' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} height={270} alt="" />}
+{movie.profile_path?<img className=' rounded-5 p-3 ' loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`} height={270} alt="" />:<img className=' rounded-5 p-3 ' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} height={270} alt="" />}
 </figure>
 <figcaption>
 <p className=' h6 text-center overflow-x-hidden text-nowrap ps-3'>{movie.original_title} {movie.original_name}</p>

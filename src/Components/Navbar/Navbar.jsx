@@ -49,10 +49,10 @@ $(".nav-link").click(function(){
           </ul>
           <ul className="navbar-nav ms-auto mt-2 mt-lg-0 d-flex align-items-center">
 
-    {userData? <>
-      <li className="nav-item">
+        <li className="nav-item">
           <input type="search" onChange={searching} width={50} placeholder="Search By Movie Name" aria-label="Search" className="form-control me-2"/>
-          </li>
+        </li>
+    {userData? <>
           <li className="nav-item">
               <button className='btn btn-outline-info ms-3' onClick={()=>removeUserData()}>LogOut</button>
             </li></>

@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom';
-
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const MoviesCard = ({media,movie}) => {
@@ -15,7 +14,14 @@ const MoviesCard = ({media,movie}) => {
   <div className='movieCard'>
   <Link className='text-decoration-none text-white' to={`/movieDetails/${movie.id}/${media}`}>
   <figure className='m-0' >
-  {movie.profile_path?<img className=' rounded-5 p-3 ' src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`} height={270} alt="" />:<img className=' rounded-5 p-3 ' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} height={270} alt="" />}
+  {movie.profile_path?<img className=' rounded-5 p-3 ' loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`} height={270} alt="" />:<img className=' rounded-5 p-3 ' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} height={270} alt="" />}
+  {/* {movie.profile_path?
+  <LazyLoadImage
+      alt={""}
+      height={270}
+      src={`https://image.tmdb.org/t/p/w500${movie.profile_path}`} // use normal <img> attributes as props
+      width={300} />
+      :null} */}
 </figure>
 <figcaption>
 <p className=' h6 text-center overflow-x-hidden text-nowrap ps-3'>{movie.original_title} {movie.original_name}</p>

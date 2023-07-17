@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { movieActors, movieDetails, movieLinks, movieVideos, recommendationsMovies } from '../../Redux/movieDetailsSlice'
 import Slider from "react-slick"
 import ActorCard from '../ActorCard/ActorCard'
 import MovieCard2 from './../MovieCard2/MovieCard2';
 import { Helmet } from 'react-helmet'
+
+import Loading from './../Loading/Loading';
+
+
 const MovieDetails = () => {
   let {media , id} =useParams()
   let dispatch = useDispatch()
-
-
+  let {loading}=useSelector((state)=>state.movieDetails)
   var settings = {
     dots: true,
     infinite: true,
@@ -130,6 +133,7 @@ useEffect(()=>{
 <Helmet>
 <title>Movie Details</title>
 </Helmet>
+{!loading?<>
   {movies? <section>
     <div className="background position-relative" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movies?.backdrop_path})`}}>
     <div className="layer"></div>
@@ -137,12 +141,12 @@ useEffect(()=>{
     <div className="row my-5 py-5 position-relative">
 
       <div className="col-md-3 col-12">
-        <img className='img-fluid rounded-4' src={`https://image.tmdb.org/t/p/w500${movies?.poster_path}`} alt="" height={400} />
+        <img className='img-fluid rounded-4' loading='lazy' src={`https://image.tmdb.org/t/p/w500${movies?.poster_path}`} alt="" height={400} />
         {link?<button type='button' onClick={watchMovie} className='btn btn-info w-100 text-white'>Watch the movie at TMDB</button>:null}
       </div>
 
     <div className="col-md-8">
-      <h2 className='my-2'>{movies?.original_title} {movies?.original_name} <span className='text-warning small'>{movies?.release_date?.slice(0,4)}  {movies?.first_air_date?.slice(0,4)} </span></h2>
+      <h2 className='my-2'>{movies?.original_title} {movies?.original_name  } <span className='text-warning small'>{movies?.release_date?.slice(0,4)}  {movies?.first_air_date?.slice(0,4)} </span></h2>
       <p className='text-light lh-3 fw-medium p-2 fs-4'>{movies?.overview}</p>
 
       {movies.genres.map((type)=><span className='p-2  fst-italic text-bg-info text-black rounded-2 me-4 fs-5 d-none  d-md-inline' key={type.id}>{type.name}</span>)}
@@ -169,7 +173,7 @@ useEffect(()=>{
 
 
     </div>
-  {actorsDetails.length>6?<div>
+  {actorsDetails.length>8?<div>
   <h2 className='px-5 py-3 fst-italic'>Movie Crew : -</h2>
 <Slider  {...settings}>
 {actorsDetails.map((movie,index)=><ActorCard media={"person"} movie={movie} key={index}/>)}
@@ -178,15 +182,18 @@ useEffect(()=>{
 
 
 <h2 className='px-5 py-3 fst-italic'>Trailers and Videos : -</h2>
-
-{videos?<div className="row">
+{videos?
+<div className="row">
   <div className=" col-lg-6 my-2">
-  <iframe src={`https://www.youtube-nocookie.com/embed/${videos[0]?.key}`} height="315" title="data.name" className="videos w-100"> </iframe>
+  <iframe  src={`https://www.youtube-nocookie.com/embed/${videos[0]?.key }`} height="315" title="data.name" className="videos w-100"> </iframe>
   </div>
   <div className="col-lg-6">
   <iframe src={`https://www.youtube-nocookie.com/embed/${videos[1]?.key}`} height="315" title="data.name" className="videos w-100"> </iframe>
   </div>
-</div>:null} 
+</div>:null}
+
+
+
 
 {moviesList.length>6?<div>
 <Slider  {...settings}>
@@ -196,8 +203,7 @@ useEffect(()=>{
     </div>
     </div>
 
-    </section>:null
-  }
+    </section>:null}</>:<Loading/>}
 
     </>
 

@@ -48,3 +48,5 @@ export const actorsDetailsSlice = createSlice({
     })
   }
 })
+
+export const actorsDetailsReducer = actorsDetailsSlice.reducer

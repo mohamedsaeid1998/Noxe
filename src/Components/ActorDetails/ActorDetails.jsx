@@ -5,9 +5,11 @@ import { getActorsDetails, getActorsMovies } from '../../Redux/actorsDetailsSlic
 import Slider from "react-slick"
 import MoviesCard from './../MoviesCard/MoviesCard';
 import {Helmet} from "react-helmet";
-
+import { useSelector } from 'react-redux';
+import Loading from './../Loading/Loading';
 
 const ActorDetails = () => {
+  let {loading}=useSelector((state)=>state.actorsDetails)
 let {id}=useParams()
 let dispatch = useDispatch()
 
@@ -101,6 +103,7 @@ var settings = {
 <Helmet>
 <title>Actor Details</title>
 </Helmet>
+{!loading?<>
 {details?<section>
 <div className="container-fluid px-5 py-5 ">
   <div className="row my-5 py-5 position-relative">
@@ -124,7 +127,7 @@ var settings = {
 
   </div>
 
-  {moviesDetails.length>7?<div>
+  {moviesDetails.length>8?<div>
     <h2 className='h3 mb-3 mt-3 ps-5 fst-italic'>Movie Credits : -</h2>
   <div className="row mx-2 g-3 position-relative ">
 
@@ -134,7 +137,7 @@ var settings = {
   </div>:null}
 
 </div>
-</section>:null}
+</section>:null}</>:<Loading/>}
           </>
 }
 
