@@ -13,7 +13,7 @@ const [loading, setLoading] = useState(false)
 
 const sendData = async (values) => {
   setLoading(true)
-  let {data} =await axios.post("https://route-ecommerce.onrender.com/api/v1/auth/signup",values)
+  let {data} =await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup",values)
   .catch((error)=>{
     setLoading(false)
     setErrorMassage(error.response.data.message)
@@ -31,7 +31,7 @@ const sendData = async (values) => {
 let validation= Yup.object({
   name:Yup.string().required("Username is required").min(3,'Username minLength is 3').max(20,"userName maxLength is 20"),
   email:Yup.string().required("Email is required").email("Email invalid"),
-  password:Yup.string().required("Password is required").matches(/^(?=.*[a-zA-Z])(?=.*\d).{8}$/,"password min Length is '8' It must contain at least one letter and a number"),
+  password:Yup.string().required("Password is required").matches(/^(?=.*[a-zA-Z])(?=.*\d).{8,}$/,"password start with a capital char and write between 5 to 10 numbers or char"),
   rePassword:Yup.string().required("rePassword is required").oneOf([Yup.ref("password")] ,"rePassword don't match "),
   phone:Yup.string().required("Phone is required").matches(/^01[0125][0-9]{8}$/,"phone number must be egyptian number")
 })
