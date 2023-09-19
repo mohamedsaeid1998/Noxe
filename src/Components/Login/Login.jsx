@@ -13,7 +13,7 @@ const Login = ({saveUserData}) => {
   
   const sendData = async (values) => {
     setLoading(true)
-    let {data} =await axios.post("https://route-ecommerce.onrender.com/api/v1/auth/signin",values)
+    let {data} =await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signin",values)
     .catch((error)=>{
       setLoading(false)
       setErrorMassage(error.response.data.message)
@@ -31,7 +31,7 @@ const Login = ({saveUserData}) => {
   
   let validation= Yup.object({
     email:Yup.string().required("Email is required").email("Email invalid"),
-    password:Yup.string().required("Password is required").matches(/^(?=.*[a-zA-Z])(?=.*\d).{8}$/,"password min Length is '8' It must contain at least one letter and a number"),
+    password:Yup.string().required("Password is required").matches(/^(?=.*[a-zA-Z])(?=.*\d).{8,}$/,"password start with a capital char and write between 5 to 10 numbers or char"),
   })
   
     let formik =useFormik({
