@@ -125,18 +125,19 @@ var settings = {
   ]
 }
 
-const settings2  = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  cssEase: "linear",
-  pauseOnHover: true,
+  const settings2  = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    pauseOnHover: true,
+    
 
-};
+  };
 
   return <>
 <Helmet>

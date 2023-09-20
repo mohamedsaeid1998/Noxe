@@ -9,7 +9,7 @@ import jwtDecode from 'jwt-decode';
 import NotFound from "./Components/NotFound/NotFound";
 import Actors from './Components/Actors/Actors';
 import Login from './Components/Login/Login';
-// import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import {Provider} from "react-redux"
 import {store} from './Redux/Store';
 import MoviesCard from "./Components/MoviesCard/MoviesCard";
