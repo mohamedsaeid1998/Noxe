@@ -31,7 +31,8 @@ const Login = ({saveUserData}) => {
   
   let validation= Yup.object({
     email:Yup.string().required("Email is required").email("Email invalid"),
-    password:Yup.string().required("Password is required").matches(/^(?=.*[a-zA-Z])(?=.*\d).{8,}$/,"password min Length is '8' It must contain at least one letter and a number"),  })
+    password:Yup.string().required("Password is required").matches(/^(?=.*[a-zA-Z])(?=.*\d).{8}$/,"password min Length is '8' It must contain at least one letter and a number"),
+  })
   
     let formik =useFormik({
       initialValues:{
