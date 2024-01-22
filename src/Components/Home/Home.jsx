@@ -11,8 +11,7 @@ import { Helmet } from 'react-helmet'
 import Loading from './../Loading/Loading';
 
 const Home = () => {
- let {loading}=useSelector((state)=>state.trending)
- console.log(loading);
+let {loading}=useSelector((state)=>state.trending)
 let dispatch = useDispatch()
 const [number, setNumber] = useState("1")
 const [movies, setMovies] = useState([])
@@ -34,14 +33,14 @@ callback(elements.payload.results)
 }
 
 
-const getTvSeries = async (mediaItem,callback)=>{
-  let elements = await dispatch(tvSeries({mediaItem}))
+const getTvSeries = async (mediaItem,callback,page)=>{
+  let elements = await dispatch(tvSeries({mediaItem,page}))
   callback(elements.payload.results)
 
 }
 
-const getMoviesList =async (mediaItem,callback)=>{
-let elements = await dispatch(moviesList({mediaItem}))
+const getMoviesList =async (mediaItem,callback,page)=>{
+let elements = await dispatch(moviesList({mediaItem,page}))
 callback(elements.payload.results)
 
 }
@@ -51,14 +50,14 @@ useEffect(()=>{
   getMoviesHere("movie",setMovies,number)
   getMoviesHere("tv",setTvShow,number)
   getMoviesHere("person",setPerson,number)
-  getTvSeries("airing_today",setAiringToday)
-  getTvSeries("on_the_air",setOnTheAir)
-  getTvSeries("popular",setPopular)
-  getTvSeries("top_rated",setTopRated)
-  getMoviesList("now_playing",setNowPlaying)
-  getMoviesList("popular",setPopularMovie)
-  getMoviesList("top_rated",setTopRatedMovie)
-  getMoviesList("upcoming",setUpcoming)
+  getTvSeries("airing_today",setAiringToday,number)
+  getTvSeries("on_the_air",setOnTheAir,number)
+  getTvSeries("popular",setPopular,number)
+  getTvSeries("top_rated",setTopRated,number)
+  getMoviesList("now_playing",setNowPlaying,number)
+  getMoviesList("popular",setPopularMovie,number)
+  getMoviesList("top_rated",setTopRatedMovie,number)
+  getMoviesList("upcoming",setUpcoming,number)
 },[])
 
 var settings = {
