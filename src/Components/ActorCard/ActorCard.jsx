@@ -7,7 +7,7 @@ const ActorCard = ({ media, movie }) => {
   return <>
 
     <div className="col-12 col-sm-4 col-md-3 col-lg-2 ">
-
+  
       <div className='movieCard'>
         <Link className='text-decoration-none text-white' to={`/actorDetails/${movie.id}/${media}`}>
           <figure className='m-0' >
